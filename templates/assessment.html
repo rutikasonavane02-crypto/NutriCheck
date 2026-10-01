@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>NutriCheck Assessment</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f8f5;
+
+    color: #263238;
+}
+
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+
+    background: #1b5e20;
+
+    color: white;
+
+    padding: 15px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.nav-links a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================
+   MAIN
+========================== */
+
+.container {
+
+    width: 92%;
+
+    max-width: 850px;
+
+    margin: 35px auto;
+}
+
+
+/* ==========================
+   START SCREEN
+========================== */
+
+.start-card {
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+
+    margin-bottom: 25px;
+}
+
+
+.start-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+
+.start-card h1 {
+
+    color: #1b5e20;
+
+    margin-bottom: 10px;
+}
+
+
+.start-card p {
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
+
+.instructions {
+
+    text-align: left;
+
+    background: #f1f8f2;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin: 25px 0;
+}
+
+
+.instructions h3 {
+
+    color: #1b5e20;
+
+    margin-top: 0;
+}
+
+
+.instructions li {
+
+    margin-bottom: 8px;
+}
+
+
+/* ==========================
+   NAME INPUT
+========================== */
+
+.name-box {
+
+    text-align: left;
+
+    margin-top: 25px;
+}
+
+
+.name-box label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+.name-box input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+
+.name-box input:focus {
+
+    outline: none;
+
+    border-color: #2e7d32;
+}
+
+
+/* ==========================
+   BUTTON
+========================== */
+
+.start-button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2e7d32;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.start-button:hover {
+
+    background: #1b5e20;
+}
+
+
+/* ==========================
+   ASSESSMENT
+========================== */
+
+.assessment-box {
+
+    display: none;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+}
+
+
+/* ==========================
+   TOP
+========================== */
+
+.assessment-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+.assessment-top h2 {
+
+    margin: 0;
+
+    color: #1b5e20;
+}
+
+
+.question-number {
+
+    font-weight: bold;
+
+    color: #666;
+}
+
+
+/* ==========================
+   PROGRESS
+========================== */
+
+.progress-background {
+
+    width: 100%;
+
+    height: 10px;
+
+    background: #e4ebe5;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 30px;
+}
+
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 5%;
+
+    background: #43a047;
+
+    border-radius: 10px;
+
+    transition: width 0.3s ease;
+}
+
+
+/* ==========================
+   QUESTION
+========================== */
+
+.question {
+
+    display: none;
+}
+
+
+.question.active {
+
+    display: block;
+}
+
+
+.question h3 {
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==========================
+   OPTIONS
+========================== */
+
+.option {
+
+    display: block;
+
+    padding: 15px;
+
+    border: 1px solid #d9e2da;
+
+    border-radius: 10px;
+
+    margin-bottom: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    background: #fbfdfb;
+}
+
+
+.option:hover {
+
+    border-color: #43a047;
+
+    background: #f1f8f2;
+}
+
+
+.option input {
+
+    margin-right: 10px;
+}
+
+
+.option.selected {
+
+    border-color: #2e7d32;
+
+    background: #e8f5e9;
+}
+
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+
+.nav-button {
+
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.previous {
+
+    background: #eeeeee;
+
+    color: #333;
+}
+
+
+.next {
+
+    background: #2e7d32;
+
+    color: white;
+
+    margin-left: auto;
+}
+
+
+.submit-button {
+
+    background: #1b5e20;
+
+    color: white;
+
+    display: none;
+}
+
+
+/* ==========================
+   ERROR
+========================== */
+
+.error-message {
+
+    display: none;
+
+    background: #ffebee;
+
+    color: #c62828;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+
+/* ==========================
+   DISCLAIMER
+========================== */
+
+.disclaimer {
+
+    background: #fff8e1;
+
+    border-left: 5px solid #f9a825;
+
+    padding: 15px;
+
+    margin-top: 25px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    color: #6d5a00;
+}
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+
+        padding: 15px;
+    }
+
+
+    .nav-links {
+
+        margin-top: 10px;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .container {
+
+        width: 94%;
+    }
+
+
+    .start-card {
+
+        padding: 25px 20px;
+    }
+
+
+    .assessment-box {
+
+        padding: 20px;
+    }
+
+
+    .question h3 {
+
+        font-size: 18px;
+    }
+
+
+    .navigation {
+
+        flex-wrap: wrap;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar">
+
+<div class="logo">
+
+🥗 NutriCheck
+
+</div>
+
+
+<div class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="/nutrition-guide">
+Nutrition Guide
+</a>
+
+</div>
+
+</nav>
+
+
+
+<div class="container">
+
+
+<!-- ==========================
+     START SCREEN
+========================== -->
+
+<div
+class="start-card"
+id="startScreen"
+>
+
+<div class="start-icon">
+🥗
+</div>
+
+
+<h1>
+NutriCheck
+</h1>
+
+
+<h2>
+Community Nutrition Assessment
+</h2>
+
+
+<p>
+Welcome! This assessment helps analyze
+dietary patterns and possible nutrition-risk
+areas for educational purposes.
+</p>
+
+
+<div class="instructions">
+
+<h3>
+Before you start
+</h3>
+
+<ul>
+
+<li>
+Answer all 20 questions.
+</li>
+
+<li>
+Choose the option that best describes you.
+</li>
+
+<li>
+The assessment takes approximately 3–5 minutes.
+</li>
+
+<li>
+Your responses are stored for the NutriCheck
+community survey project.
+</li>
+
+<li>
+The results are educational indicators and
+do not diagnose nutritional deficiencies.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="name-box">
+
+<label for="userName">
+Your Name
+</label>
+
+<input
+type="text"
+id="userName"
+placeholder="Enter your name"
+maxlength="100"
+required
+>
+
+</div>
+
+
+<button
+type="button"
+class="start-button"
+onclick="startAssessment()"
+>
+
+🚀 Start Assessment
+
+</button>
+
+</div>
+
+
+
+<!-- ==========================
+     ASSESSMENT FORM
+========================== -->
+
+<div
+class="assessment-box"
+id="assessmentBox"
+>
+
+
+<div class="assessment-top">
+
+<h2>
+Nutrition Assessment
+</h2>
+
+<span
+class="question-number"
+id="questionNumber"
+>
+Question 1 of 20
+</span>
+
+</div>
+
+
+<div class="progress-background">
+
+<div
+class="progress-bar"
+id="progressBar"
+>
+</div>
+
+</div>
+
+
+<div
+class="error-message"
+id="errorMessage"
+>
+Please select an answer before continuing.
+</div>
+
+
+<form
+method="POST"
+action="/submit"
+id="assessmentForm"
+>
+
+
+<!-- NAME -->
+
+<input
+type="hidden"
+name="name"
+id="hiddenName"
+>
+
+
+<!-- ==========================
+     QUESTION 1
+========================== -->
+
+<div class="question active">
+
+<h3>
+1. What is your age group?
+</h3>
+
+
+<label class="option">
+
+<input
+type="radio"
+name="age_group"
+value="Below 15"
+required
+>
+
+Below 15
+
+</label>
+
+
+<label class="option">
+
+<input
+type="radio"
+name="age_group"
+value="15–20"
+>
+
+15–20
+
+</label>
+
+
+<label class="option">
+
+<input
+type="radio"
+name="age_group"
+value="21–30"
+>
+
+21–30
+
+</label>
+
+
+<label class="option">
+
+<input
+type="radio"
+name="age_group"
+value="31–45"
+>
+
+31–45
+
+</label>
+
+
+<label class="option">
+
+<input
+type="radio"
+name="age_group"
+value="Above 45"
+>
+
+Above 45
+
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 2 -->
+
+<div class="question">
+
+<h3>
+2. What is your gender?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="gender" value="Male">
+Male
+</label>
+
+
+<label class="option">
+<input type="radio" name="gender" value="Female">
+Female
+</label>
+
+
+<label class="option">
+<input type="radio" name="gender" value="Prefer not to say">
+Prefer not to say
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 3 -->
+
+<div class="question">
+
+<h3>
+3. What is your occupation?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="occupation" value="Student">
+Student
+</label>
+
+
+<label class="option">
+<input type="radio" name="occupation" value="Employed">
+Employed
+</label>
+
+
+<label class="option">
+<input type="radio" name="occupation" value="Self-employed">
+Self-employed
+</label>
+
+
+<label class="option">
+<input type="radio" name="occupation" value="Homemaker">
+Homemaker
+</label>
+
+
+<label class="option">
+<input type="radio" name="occupation" value="Other">
+Other
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 4 -->
+
+<div class="question">
+
+<h3>
+4. What type of diet do you follow?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="diet" value="Vegetarian">
+Vegetarian
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet" value="Non-vegetarian">
+Non-vegetarian
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet" value="Eggetarian">
+Eggetarian
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet" value="Vegan">
+Vegan
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet" value="Other">
+Other
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 5 -->
+
+<div class="question">
+
+<h3>
+5. How many meals do you usually have per day?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="meals" value="1">
+1
+</label>
+
+
+<label class="option">
+<input type="radio" name="meals" value="2">
+2
+</label>
+
+
+<label class="option">
+<input type="radio" name="meals" value="3">
+3
+</label>
+
+
+<label class="option">
+<input type="radio" name="meals" value="4+">
+4+
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 6 -->
+
+<div class="question">
+
+<h3>
+6. How often do you eat fruits and vegetables?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="fruitveg" value="daily">
+Daily
+</label>
+
+
+<label class="option">
+<input type="radio" name="fruitveg" value="4-6">
+4–6 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="fruitveg" value="1-3">
+1–3 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="fruitveg" value="rarely">
+Rarely
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 7 -->
+
+<div class="question">
+
+<h3>
+7. How often do you consume milk, dairy products, or suitable fortified alternatives?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="dairy" value="daily">
+Daily
+</label>
+
+
+<label class="option">
+<input type="radio" name="dairy" value="4-6">
+4–6 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="dairy" value="1-3">
+1–3 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="dairy" value="rarely">
+Rarely
+</label>
+
+
+<label class="option">
+<input type="radio" name="dairy" value="never">
+Never
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 8 -->
+
+<div class="question">
+
+<h3>
+8. How often do you eat protein-rich foods such as pulses, beans, eggs, fish, or meat?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="protein" value="daily">
+Daily
+</label>
+
+
+<label class="option">
+<input type="radio" name="protein" value="4-6">
+4–6 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="protein" value="1-3">
+1–3 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="protein" value="rarely">
+Rarely
+</label>
+
+
+<label class="option">
+<input type="radio" name="protein" value="never">
+Never
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 9 -->
+
+<div class="question">
+
+<h3>
+9. How often do you eat breakfast?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="breakfast" value="Every day">
+Every day
+</label>
+
+
+<label class="option">
+<input type="radio" name="breakfast" value="4-6 days a week">
+4–6 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="breakfast" value="1-3 days a week">
+1–3 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="breakfast" value="Rarely">
+Rarely
+</label>
+
+
+<label class="option">
+<input type="radio" name="breakfast" value="Never">
+Never
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 10 -->
+
+<div class="question">
+
+<h3>
+10. How often do you eat fast or processed foods?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="processed_food" value="Never">
+Never
+</label>
+
+
+<label class="option">
+<input type="radio" name="processed_food" value="Rarely">
+Rarely
+</label>
+
+
+<label class="option">
+<input type="radio" name="processed_food" value="Sometimes">
+Sometimes
+</label>
+
+
+<label class="option">
+<input type="radio" name="processed_food" value="Often">
+Often
+</label>
+
+
+<label class="option">
+<input type="radio" name="processed_food" value="Daily">
+Daily
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 11 -->
+
+<div class="question">
+
+<h3>
+11. How often do you spend time outdoors in daylight?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="sunlight" value="daily">
+Daily
+</label>
+
+
+<label class="option">
+<input type="radio" name="sunlight" value="4-6">
+4–6 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="sunlight" value="1-3">
+1–3 days a week
+</label>
+
+
+<label class="option">
+<input type="radio" name="sunlight" value="rarely">
+Rarely
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 12 -->
+
+<div class="question">
+
+<h3>
+12. How would you rate your overall diet?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="diet_rating" value="Excellent">
+Excellent
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_rating" value="Good">
+Good
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_rating" value="Average">
+Average
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_rating" value="Poor">
+Poor
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 13 -->
+
+<div class="question">
+
+<h3>
+13. Approximately how much water do you drink per day?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="water" value="Less than 1 litre">
+Less than 1 litre
+</label>
+
+
+<label class="option">
+<input type="radio" name="water" value="1–2 litres">
+1–2 litres
+</label>
+
+
+<label class="option">
+<input type="radio" name="water" value="2–3 litres">
+2–3 litres
+</label>
+
+
+<label class="option">
+<input type="radio" name="water" value="More than 3 litres">
+More than 3 litres
+</label>
+
+
+<label class="option">
+<input type="radio" name="water" value="I am not sure">
+I am not sure
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 14 -->
+
+<div class="question">
+
+<h3>
+14. How would you rate your nutrition knowledge?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="nutrition_knowledge" value="Very good">
+Very good
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_knowledge" value="Good">
+Good
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_knowledge" value="Average">
+Average
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_knowledge" value="Poor">
+Poor
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_knowledge" value="Very poor">
+Very poor
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 15 -->
+
+<div class="question">
+
+<h3>
+15. What is the main barrier to maintaining a balanced diet?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Cost">
+Cost
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Availability">
+Availability
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Lack of time">
+Lack of time
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Lack of nutrition knowledge">
+Lack of nutrition knowledge
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Food preferences">
+Food preferences
+</label>
+
+
+<label class="option">
+<input type="radio" name="diet_barrier" value="Other">
+Other
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 16 -->
+
+<div class="question">
+
+<h3>
+16. Have you ever been professionally diagnosed with a nutritional deficiency?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="diagnosed" value="Yes">
+Yes
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed" value="No">
+No
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed" value="Not sure">
+Not sure
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed" value="Prefer not to say">
+Prefer not to say
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 17 -->
+
+<div class="question">
+
+<h3>
+17. If yes, which nutritional deficiency were you diagnosed with?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Iron">
+Iron
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Vitamin B12">
+Vitamin B12
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Vitamin D">
+Vitamin D
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Calcium">
+Calcium
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Other">
+Other
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Not applicable">
+Not applicable
+</label>
+
+
+<label class="option">
+<input type="radio" name="diagnosed_type" value="Prefer not to say">
+Prefer not to say
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 18 -->
+
+<div class="question">
+
+<h3>
+18. What is your main source of nutrition information?
+</h3>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Healthcare professional">
+Healthcare professional
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="School/college">
+School/college
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Family/friends">
+Family/friends
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Internet">
+Internet
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Social media">
+Social media
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Books/newspapers">
+Books/newspapers
+</label>
+
+
+<label class="option">
+<input type="radio" name="nutrition_source" value="Other">
+Other
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 19 -->
+
+<div class="question">
+
+<h3>
+19. Do you take nutritional supplements?
+</h3>
+
+
+<label class="option">
+<input
+type="radio"
+name="supplements"
+value="Yes, as advised by healthcare professional"
+>
+Yes, as advised by healthcare professional
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="supplements"
+value="Yes, without professional advice"
+>
+Yes, without professional advice
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="supplements"
+value="No"
+>
+No
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="supplements"
+value="Prefer not to say"
+>
+Prefer not to say
+</label>
+
+</div>
+
+
+
+<!-- QUESTION 20 -->
+
+<div class="question">
+
+<h3>
+20. Would a nutrition awareness program be useful?
+</h3>
+
+
+<label class="option">
+<input
+type="radio"
+name="awareness"
+value="Definitely yes"
+>
+Definitely yes
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="awareness"
+value="Probably yes"
+>
+Probably yes
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="awareness"
+value="Not sure"
+>
+Not sure
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="awareness"
+value="Probably no"
+>
+Probably no
+</label>
+
+
+<label class="option">
+<input
+type="radio"
+name="awareness"
+value="Definitely no"
+>
+Definitely no
+</label>
+
+</div>
+
+
+
+<!-- ==========================
+     NAVIGATION
+========================== -->
+
+<div class="navigation">
+
+
+<button
+type="button"
+class="nav-button previous"
+id="previousButton"
+onclick="previousQuestion()"
+style="display:none;"
+>
+
+← Previous
+
+</button>
+
+
+<button
+type="button"
+class="nav-button next"
+id="nextButton"
+onclick="nextQuestion()"
+>
+
+Next →
+
+</button>
+
+
+<button
+type="submit"
+class="nav-button submit-button"
+id="submitButton"
+>
+
+Submit Assessment ✓
+
+</button>
+
+</div>
+
+
+</form>
+
+
+<div class="disclaimer">
+
+<strong>Note:</strong>
+
+NutriCheck provides educational analysis based
+on survey responses. It does not diagnose
+nutritional deficiencies.
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<footer>
+
+NutriCheck © 2026 |
+Community Nutrition Data Science Project
+
+</footer>
+
+
+
+<script>
+
+
+// =====================================
+// VARIABLES
+// =====================================
+
+let currentQuestion = 0;
+
+
+const questions =
+document.querySelectorAll(".question");
+
+
+const totalQuestions =
+questions.length;
+
+
+const startScreen =
+document.getElementById("startScreen");
+
+
+const assessmentBox =
+document.getElementById("assessmentBox");
+
+
+const questionNumber =
+document.getElementById("questionNumber");
+
+
+const progressBar =
+document.getElementById("progressBar");
+
+
+const previousButton =
+document.getElementById("previousButton");
+
+
+const nextButton =
+document.getElementById("nextButton");
+
+
+const submitButton =
+document.getElementById("submitButton");
+
+
+const errorMessage =
+document.getElementById("errorMessage");
+
+
+const userName =
+document.getElementById("userName");
+
+
+const hiddenName =
+document.getElementById("hiddenName");
+
+
+// =====================================
+// START ASSESSMENT
+// =====================================
+
+function startAssessment() {
+
+    const name =
+    userName.value.trim();
+
+
+    if (name === "") {
+
+        userName.focus();
+
+        alert("Please enter your name before starting the assessment.");
+
+        return;
+
+    }
+
+
+    hiddenName.value = name;
+
+
+    startScreen.style.display = "none";
+
+    assessmentBox.style.display = "block";
+
+
+    showQuestion(0);
+
+}
+
+
+// =====================================
+// SHOW QUESTION
+// =====================================
+
+function showQuestion(index) {
+
+    questions.forEach(
+        question => {
+            question.classList.remove("active");
+        }
+    );
+
+
+    questions[index].classList.add("active");
+
+
+    currentQuestion = index;
+
+
+    // Question number
+
+    questionNumber.textContent =
+    "Question " +
+    (index + 1) +
+    " of " +
+    totalQuestions;
+
+
+    // Progress
+
+    const progress =
+    ((index + 1) / totalQuestions) * 100;
+
+
+    progressBar.style.width =
+    progress + "%";
+
+
+    // Previous button
+
+    if (index === 0) {
+
+        previousButton.style.display = "none";
+
+    } else {
+
+        previousButton.style.display = "block";
+
+    }
+
+
+    // Next / Submit
+
+    if (index === totalQuestions - 1) {
+
+        nextButton.style.display = "none";
+
+        submitButton.style.display = "block";
+
+    } else {
+
+        nextButton.style.display = "block";
+
+        submitButton.style.display = "none";
+
+    }
+
+
+    errorMessage.style.display = "none";
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+// =====================================
+// CHECK CURRENT ANSWER
+// =====================================
+
+function hasAnswer() {
+
+    const current =
+    questions[currentQuestion];
+
+
+    const selected =
+    current.querySelector(
+        'input[type="radio"]:checked'
+    );
+
+
+    return selected !== null;
+
+}
+
+
+// =====================================
+// NEXT
+// =====================================
+
+function nextQuestion() {
+
+    if (!hasAnswer()) {
+
+        errorMessage.style.display =
+        "block";
+
+        return;
+
+    }
+
+
+    if (
+        currentQuestion <
+        totalQuestions - 1
+    ) {
+
+        showQuestion(
+            currentQuestion + 1
+        );
+
+    }
+
+}
+
+
+// =====================================
+// PREVIOUS
+// =====================================
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+
+        showQuestion(
+            currentQuestion - 1
+        );
+
+    }
+
+}
+
+
+// =====================================
+// OPTION HIGHLIGHT
+// =====================================
+
+document.querySelectorAll(
+    ".option input"
+).forEach(
+
+    input => {
+
+        input.addEventListener(
+            "change",
+            function() {
+
+                const parent =
+                this.closest(".question");
+
+
+                parent
+                .querySelectorAll(".option")
+                .forEach(
+                    option => {
+                        option.classList.remove(
+                            "selected"
+                        );
+                    }
+                );
+
+
+                this.closest(".option")
+                .classList.add("selected");
+
+
+                errorMessage.style.display =
+                "none";
+
+            }
+        );
+
+    }
+
+);
+
+
+// =====================================
+// FINAL FORM VALIDATION
+// =====================================
+
+document.getElementById(
+    "assessmentForm"
+).addEventListener(
+    "submit",
+    function(event) {
+
+        if (!hasAnswer()) {
+
+            event.preventDefault();
+
+            errorMessage.style.display =
+            "block";
+
+            return;
+
+        }
+
+
+        if (hiddenName.value.trim() === "") {
+
+            event.preventDefault();
+
+            alert(
+                "Please enter your name before submitting."
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

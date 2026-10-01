@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Nutrition Guide - NutriCheck</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8f5;
+    color: #333;
+}
+
+nav {
+    background: #1b5e20;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    background: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    color: #1b5e20;
+    font-size: 42px;
+}
+
+.hero p {
+    color: #555;
+    font-size: 18px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    color: #1b5e20;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+.tips {
+    background: white;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.tips h2 {
+    color: #1b5e20;
+}
+
+.disclaimer {
+    background: #fff8e1;
+    border-left: 5px solid #ffb300;
+    padding: 20px;
+    margin-top: 30px;
+    line-height: 1.6;
+}
+
+.button {
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    background: #1b5e20;
+    color: white;
+    padding: 14px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+footer {
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+@media(max-width:700px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<strong>NutriCheck</strong>
+
+<div>
+
+<a href="/">Home</a>
+
+<a href="/assessment">Assessment</a>
+
+<a href="/dashboard">Dashboard</a>
+
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>Nutrition Guide</h1>
+
+<p>
+Learn about important nutrients and common food sources.
+</p>
+
+</section>
+
+
+<div class="container">
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h2>🩸 Iron</h2>
+
+<p>
+Iron helps the body make healthy red blood cells.
+</p>
+
+<h3>Food Sources</h3>
+
+<ul>
+
+<li>Green leafy vegetables</li>
+<li>Lentils and beans</li>
+<li>Chickpeas</li>
+<li>Fortified cereals</li>
+<li>Eggs and meat</li>
+<li>Nuts and seeds</li>
+
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h2>🧠 Vitamin B12</h2>
+
+<p>
+Vitamin B12 supports normal blood and nerve function.
+</p>
+
+<h3>Food Sources</h3>
+
+<ul>
+
+<li>Milk and dairy products</li>
+<li>Eggs</li>
+<li>Fish</li>
+<li>Meat and poultry</li>
+<li>Fortified foods</li>
+
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h2>☀️ Vitamin D</h2>
+
+<p>
+Vitamin D helps the body absorb calcium and supports bone health.
+</p>
+
+<h3>Sources</h3>
+
+<ul>
+
+<li>Appropriate sunlight exposure</li>
+<li>Fortified milk and foods</li>
+<li>Egg yolks</li>
+<li>Fatty fish</li>
+<li>Some mushrooms</li>
+
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h2>🦴 Calcium</h2>
+
+<p>
+Calcium is important for bones, teeth and normal muscle function.
+</p>
+
+<h3>Food Sources</h3>
+
+<ul>
+
+<li>Milk and yoghurt</li>
+<li>Cheese</li>
+<li>Ragi</li>
+<li>Sesame seeds</li>
+<li>Green leafy vegetables</li>
+<li>Calcium-fortified foods</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+<div class="tips">
+
+<h2>🥗 General Healthy Eating Tips</h2>
+
+<ul>
+
+<li>Eat a variety of fruits and vegetables.</li>
+
+<li>Include protein-rich foods such as pulses and beans.</li>
+
+<li>Choose a variety of foods from different food groups.</li>
+
+<li>Drink water regularly according to your individual needs.</li>
+
+<li>Limit excessive intake of highly processed foods.</li>
+
+<li>Seek professional advice for individual nutrition concerns.</li>
+
+</ul>
+
+</div>
+
+
+<div class="disclaimer">
+
+<strong>Important:</strong>
+
+NutriCheck is an educational student project.
+The information and assessment results are not
+a medical diagnosis.
+
+</div>
+
+
+<a href="/assessment" class="button">
+Take Nutrition Assessment
+</a>
+
+
+</div>
+
+
+<footer>
+
+NutriCheck | Community Engagement Project
+
+</footer>
+
+</body>
+
+</html>

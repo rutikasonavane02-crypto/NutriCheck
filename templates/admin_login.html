@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login - NutriCheck</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8f5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.login-box {
+
+    background: white;
+
+    width: 90%;
+    max-width: 400px;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.1);
+
+    text-align: center;
+}
+
+h1 {
+    color: #1b5e20;
+}
+
+p {
+    color: #666;
+}
+
+input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    box-sizing: border-box;
+
+    font-size: 16px;
+}
+
+button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 20px;
+
+    background: #1b5e20;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+
+    background: #2e7d32;
+}
+
+.error {
+
+    color: #c62828;
+
+    margin-top: 15px;
+
+    font-weight: bold;
+}
+
+.home {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color: #1b5e20;
+
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>🔐 NutriCheck</h1>
+
+<h2>Private Dashboard</h2>
+
+<p>
+Enter the administrator password to continue.
+</p>
+
+
+<form method="POST">
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter password"
+    required
+>
+
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+
+{% if error %}
+
+<div class="error">
+{{ error }}
+</div>
+
+{% endif %}
+
+
+<a href="/" class="home">
+← Back to Home
+</a>
+
+</div>
+
+</body>
+
+</html>

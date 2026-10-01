@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NutriCheck - Home</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f5;
+    color: #333;
+}
+
+nav {
+    background: #1b5e20;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    color: #1b5e20;
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #1b5e20;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.section h2 {
+    text-align: center;
+    color: #1b5e20;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 28px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #1b5e20;
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.5;
+    color: #555;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.step {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.step-number {
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background: #1b5e20;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.disclaimer {
+    background: #fff8e1;
+    border-left: 5px solid #ffb300;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+footer {
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 60px;
+    line-height: 1.7;
+}
+
+@media(max-width:800px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cards,
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:500px) {
+
+    .cards,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+NutriCheck
+</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+
+<a href="/assessment">Assessment</a>
+
+<a href="/admin-login">Dashboard</a>
+
+<a href="/nutrition-guide">Nutrition Guide</a>
+
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>NutriCheck</h1>
+
+<h2>Nutrition Deficiency Analysis</h2>
+
+<p>
+
+A Community Engagement Project that analyzes
+nutrition-related survey data and highlights
+possible nutrition-risk areas related to
+Iron, Vitamin B12, Vitamin D and Calcium.
+
+</p>
+
+<a href="/assessment" class="button">
+🚀 Get Started – Analyze My Nutrition
+</a>
+
+</section>
+
+
+<section class="section">
+
+<h2>What NutriCheck Analyzes</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">🩸</div>
+
+<h3>Iron</h3>
+
+<p>
+Analyzes dietary patterns associated
+with possible iron-risk areas.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🧠</div>
+
+<h3>Vitamin B12</h3>
+
+<p>
+Analyzes dietary patterns associated
+with possible Vitamin B12-risk areas.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">☀️</div>
+
+<h3>Vitamin D</h3>
+
+<p>
+Considers daylight exposure and
+related lifestyle patterns.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">🦴</div>
+
+<h3>Calcium</h3>
+
+<p>
+Considers dairy and other dietary
+patterns related to calcium intake.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<h2>How NutriCheck Works</h2>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<h3>Answer</h3>
+
+<p>Complete the nutrition questionnaire.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<h3>Store</h3>
+
+<p>Your responses are stored for project analysis.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<h3>Analyze</h3>
+
+<p>The system analyzes selected nutrition responses.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">4</div>
+
+<h3>Results</h3>
+
+<p>View possible nutrition-risk areas.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="disclaimer">
+
+<strong>Important:</strong>
+
+NutriCheck is a student educational project.
+Results indicate possible nutrition-risk areas
+based on survey responses and are not a medical
+diagnosis.
+
+</div>
+
+</section>
+
+
+<footer>
+
+<strong>NutriCheck</strong>
+
+<br>
+
+Community Engagement Project
+
+<br>
+
+Nutrition Deficiency Analysis Using Local Health Survey Data
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>NutriCheck - Assessment Result</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f8f5;
+
+    color: #263238;
+}
+
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar {
+
+    background: #1b5e20;
+
+    color: white;
+
+    padding: 15px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 20px;
+}
+
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.nav-links a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================
+   MAIN CONTAINER
+========================== */
+
+.container {
+
+    width: 92%;
+
+    max-width: 1000px;
+
+    margin: 35px auto;
+}
+
+
+/* ==========================
+   WELCOME
+========================== */
+
+.welcome-card {
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+
+    margin-bottom: 25px;
+}
+
+
+.welcome-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+
+.welcome-card h1 {
+
+    margin: 5px 0;
+
+    color: #1b5e20;
+
+    font-size: 30px;
+}
+
+
+.welcome-card h2 {
+
+    margin: 10px 0;
+
+    color: #333;
+
+    font-size: 21px;
+}
+
+
+.welcome-card p {
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================
+   RESULT TITLE
+========================== */
+
+.result-heading {
+
+    text-align: center;
+
+    margin: 35px 0 20px;
+}
+
+
+.result-heading h2 {
+
+    color: #1b5e20;
+
+    margin-bottom: 8px;
+}
+
+
+.result-heading p {
+
+    color: #666;
+}
+
+
+/* ==========================
+   RESULT GRID
+========================== */
+
+.result-grid {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ==========================
+   RESULT CARD
+========================== */
+
+.result-card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,0.07);
+
+    text-align: center;
+
+    transition: 0.2s;
+
+    border-top: 5px solid #43a047;
+}
+
+
+.result-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 8px 22px rgba(0,0,0,0.10);
+}
+
+
+.nutrient-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 8px;
+}
+
+
+.result-card h3 {
+
+    margin: 8px 0;
+
+    color: #263238;
+
+    font-size: 21px;
+}
+
+
+.result-status {
+
+    display: inline-block;
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    background: #e8f5e9;
+
+    color: #1b5e20;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    margin-top: 8px;
+}
+
+
+/* ==========================
+   INFORMATION
+========================== */
+
+.info-section {
+
+    background: white;
+
+    margin-top: 25px;
+
+    padding: 28px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,0.07);
+}
+
+
+.info-section h2 {
+
+    color: #1b5e20;
+
+    margin-top: 0;
+}
+
+
+.info-section p {
+
+    line-height: 1.7;
+
+    color: #555;
+}
+
+
+.info-list {
+
+    padding-left: 20px;
+}
+
+
+.info-list li {
+
+    margin-bottom: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================
+   GUIDANCE CARDS
+========================== */
+
+.guidance-grid {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+.guidance-card {
+
+    background: #f1f8f2;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    border-left: 4px solid #43a047;
+}
+
+
+.guidance-card h3 {
+
+    margin-top: 0;
+
+    color: #1b5e20;
+}
+
+
+.guidance-card p {
+
+    margin-bottom: 0;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.button-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin: 30px 0;
+}
+
+
+.button {
+
+    padding: 13px 22px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+.primary {
+
+    background: #2e7d32;
+
+    color: white;
+}
+
+
+.primary:hover {
+
+    background: #1b5e20;
+}
+
+
+.secondary {
+
+    background: #e8f5e9;
+
+    color: #1b5e20;
+}
+
+
+.secondary:hover {
+
+    background: #dceddd;
+}
+
+
+.print-button {
+
+    background: #eeeeee;
+
+    color: #333;
+}
+
+
+/* ==========================
+   DISCLAIMER
+========================== */
+
+.disclaimer {
+
+    background: #fff8e1;
+
+    border-left: 5px solid #f9a825;
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #6d5a00;
+}
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer {
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print {
+
+    .navbar,
+    .button-area,
+    footer {
+
+        display: none;
+    }
+
+
+    body {
+
+        background: white;
+    }
+
+
+    .container {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+    }
+
+
+    .welcome-card,
+    .result-card,
+    .info-section {
+
+        box-shadow: none;
+
+        border: 1px solid #ddd;
+    }
+
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 650px) {
+
+    .navbar {
+
+        padding: 15px;
+    }
+
+
+    .nav-links {
+
+        margin-top: 10px;
+
+        gap: 12px;
+    }
+
+
+    .container {
+
+        width: 94%;
+
+        margin-top: 20px;
+    }
+
+
+    .welcome-card {
+
+        padding: 25px 18px;
+    }
+
+
+    .welcome-card h1 {
+
+        font-size: 25px;
+    }
+
+
+    .result-grid,
+    .guidance-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .info-section {
+
+        padding: 22px 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar">
+
+<div class="logo">
+🥗 NutriCheck
+</div>
+
+
+<div class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="/nutrition-guide">
+Nutrition Guide
+</a>
+
+</div>
+
+</nav>
+
+
+
+<div class="container">
+
+
+<!-- ==========================
+     WELCOME
+========================== -->
+
+<div class="welcome-card">
+
+<div class="welcome-icon">
+🎉
+</div>
+
+
+<h1>
+Assessment Completed!
+</h1>
+
+
+<h2>
+Hello, {{ name }} 👋
+</h2>
+
+
+<p>
+Thank you for completing the NutriCheck
+community nutrition assessment.
+</p>
+
+</div>
+
+
+
+<!-- ==========================
+     RESULT HEADING
+========================== -->
+
+<div class="result-heading">
+
+<h2>
+Your Nutrition-Risk Summary
+</h2>
+
+
+<p>
+The following results are based on your
+survey responses.
+</p>
+
+</div>
+
+
+
+<!-- ==========================
+     RESULT CARDS
+========================== -->
+
+<div class="result-grid">
+
+
+<!-- IRON -->
+
+<div class="result-card">
+
+<div class="nutrient-icon">
+🩸
+</div>
+
+
+<h3>
+Iron
+</h3>
+
+
+<div class="result-status">
+{{ results["Iron"] }}
+</div>
+
+</div>
+
+
+
+<!-- B12 -->
+
+<div class="result-card">
+
+<div class="nutrient-icon">
+🧠
+</div>
+
+
+<h3>
+Vitamin B12
+</h3>
+
+
+<div class="result-status">
+{{ results["Vitamin B12"] }}
+</div>
+
+</div>
+
+
+
+<!-- VITAMIN D -->
+
+<div class="result-card">
+
+<div class="nutrient-icon">
+☀️
+</div>
+
+
+<h3>
+Vitamin D
+</h3>
+
+
+<div class="result-status">
+{{ results["Vitamin D"] }}
+</div>
+
+</div>
+
+
+
+<!-- CALCIUM -->
+
+<div class="result-card">
+
+<div class="nutrient-icon">
+🦴
+</div>
+
+
+<h3>
+Calcium
+</h3>
+
+
+<div class="result-status">
+{{ results["Calcium"] }}
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ==========================
+     WHAT DOES THIS MEAN?
+========================== -->
+
+<div class="info-section">
+
+<h2>
+📊 What does this result mean?
+</h2>
+
+
+<p>
+
+NutriCheck analyzes selected dietary and
+lifestyle responses to identify areas where
+there may be a <strong>possible nutrition risk</strong>.
+
+</p>
+
+
+<ul class="info-list">
+
+<li>
+A <strong>Lower possible risk</strong> means your
+survey responses did not trigger the project's
+defined risk indicators for that nutrient.
+</li>
+
+
+<li>
+A <strong>Moderate possible risk</strong> means
+some responses matched the project's
+nutrition-risk indicators.
+</li>
+
+
+<li>
+A <strong>Higher possible risk</strong> means
+more of the project's defined indicators
+were present in your responses.
+</li>
+
+</ul>
+
+
+<p>
+
+These categories are part of the NutriCheck
+Data Science project and should not be
+interpreted as a medical diagnosis.
+
+</p>
+
+</div>
+
+
+
+<!-- ==========================
+     GENERAL GUIDANCE
+========================== -->
+
+<div class="info-section">
+
+<h2>
+🥗 General Nutrition Guidance
+</h2>
+
+
+<p>
+A balanced diet can include a variety of
+nutrient-rich foods. Some general examples
+are:
+</p>
+
+
+<div class="guidance-grid">
+
+
+<div class="guidance-card">
+
+<h3>
+🩸 Iron
+</h3>
+
+<p>
+Include a variety of iron-containing foods
+such as pulses, beans, leafy vegetables,
+fortified foods, eggs, fish, or meat according
+to your dietary preferences.
+</p>
+
+</div>
+
+
+
+<div class="guidance-card">
+
+<h3>
+🧠 Vitamin B12
+</h3>
+
+<p>
+B12 can be obtained from foods such as
+eggs, dairy products, fish, meat, and
+fortified foods, depending on your diet.
+</p>
+
+</div>
+
+
+
+<div class="guidance-card">
+
+<h3>
+☀️ Vitamin D
+</h3>
+
+<p>
+Vitamin D can come from appropriate
+sunlight exposure, foods containing
+vitamin D, and fortified foods.
+</p>
+
+</div>
+
+
+
+<div class="guidance-card">
+
+<h3>
+🦴 Calcium
+</h3>
+
+<p>
+Calcium-containing foods include dairy
+products and suitable fortified alternatives,
+as well as some leafy vegetables and other
+calcium-containing foods.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ==========================
+     BUTTONS
+========================== -->
+
+<div class="button-area">
+
+
+<a
+href="/assessment"
+class="button primary"
+>
+🔄 Retake Assessment
+</a>
+
+
+<a
+href="/nutrition-guide"
+class="button secondary"
+>
+📖 Nutrition Guide
+</a>
+
+
+<button
+onclick="window.print()"
+class="button print-button"
+>
+🖨️ Print Result
+</button>
+
+</div>
+
+
+
+<!-- ==========================
+     DISCLAIMER
+========================== -->
+
+<div class="disclaimer">
+
+<strong>Important:</strong>
+
+NutriCheck is an educational community
+survey and Data Science project. The results
+indicate <strong>possible nutrition-risk areas</strong>
+based on questionnaire responses. They do not
+confirm or diagnose a nutritional deficiency.
+
+If you have concerns about your nutrition or
+health, consider discussing them with a
+qualified healthcare professional.
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==========================
+     FOOTER
+========================== -->
+
+<footer>
+
+NutriCheck © 2026 |
+Community Nutrition Data Science Project
+
+</footer>
+
+
+</body>
+
+</html>
