@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
 import psycopg
 from psycopg.rows import dict_row
@@ -7,19 +8,33 @@ import os
 
 app = Flask(__name__)
 
-app.secret_key = "NutriCheck_Project_Secret_2026"
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "NutriCheck_Project_Secret_2026"
+)
 
-ADMIN_PASSWORD = "NutriCheck@2026"
+ADMIN_PASSWORD = os.environ.get(
+    "ADMIN_PASSWORD",
+    "NutriCheck@2026"
+)
 
+# LOCAL: uses database.db, so responses survive restarting Flask/VS Code.
+# DEPLOYED: if DATABASE_URL is set, uses PostgreSQL.
 DATABASE_URL = os.environ.get("DATABASE_URL")
-
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL environment variable is not set")
-
+LOCAL_DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "database.db")
 
 def get_db():
-    return psycopg.connect(DATABASE_URL, row_factory=dict_row)
+    if DATABASE_URL:
+        return psycopg.connect(DATABASE_URL, row_factory=dict_row)
+    conn = sqlite3.connect(LOCAL_DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
 
+def execute(conn, query, params=()):
+    """Run the same SQL against PostgreSQL or SQLite."""
+    if DATABASE_URL:
+        return conn.execute(query, params)
+    return conn.execute(query.replace("%s", "?"), params)
 
 # --------------------------------------------------
 # DATABASE INITIALIZATION
@@ -28,33 +43,62 @@ def get_db():
 def init_db():
     conn = get_db()
 
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS assessments (
-            id SERIAL PRIMARY KEY,
-            name TEXT,
-            submitted_at TEXT,
-            age_group TEXT,
-            gender TEXT,
-            occupation TEXT,
-            diet TEXT,
-            meals TEXT,
-            fruitveg TEXT,
-            dairy TEXT,
-            protein TEXT,
-            breakfast TEXT,
-            processed_food TEXT,
-            sunlight TEXT,
-            diet_rating TEXT,
-            water TEXT,
-            nutrition_knowledge TEXT,
-            diet_barrier TEXT,
-            diagnosed TEXT,
-            diagnosed_type TEXT,
-            nutrition_source TEXT,
-            supplements TEXT,
-            awareness TEXT
-        )
-    """)
+    if DATABASE_URL:
+        execute(conn, """
+            CREATE TABLE IF NOT EXISTS assessments (
+                id SERIAL PRIMARY KEY,
+                name TEXT,
+                submitted_at TEXT,
+                age_group TEXT,
+                gender TEXT,
+                occupation TEXT,
+                diet TEXT,
+                meals TEXT,
+                fruitveg TEXT,
+                dairy TEXT,
+                protein TEXT,
+                breakfast TEXT,
+                processed_food TEXT,
+                sunlight TEXT,
+                diet_rating TEXT,
+                water TEXT,
+                nutrition_knowledge TEXT,
+                diet_barrier TEXT,
+                diagnosed TEXT,
+                diagnosed_type TEXT,
+                nutrition_source TEXT,
+                supplements TEXT,
+                awareness TEXT
+            )
+        """)
+    else:
+        execute(conn, """
+            CREATE TABLE IF NOT EXISTS assessments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                submitted_at TEXT,
+                age_group TEXT,
+                gender TEXT,
+                occupation TEXT,
+                diet TEXT,
+                meals TEXT,
+                fruitveg TEXT,
+                dairy TEXT,
+                protein TEXT,
+                breakfast TEXT,
+                processed_food TEXT,
+                sunlight TEXT,
+                diet_rating TEXT,
+                water TEXT,
+                nutrition_knowledge TEXT,
+                diet_barrier TEXT,
+                diagnosed TEXT,
+                diagnosed_type TEXT,
+                nutrition_source TEXT,
+                supplements TEXT,
+                awareness TEXT
+            )
+        """)
 
     conn.commit()
     conn.close()
@@ -65,6 +109,11 @@ def init_db():
 # --------------------------------------------------
 
 def calculate_risk(data):
+
+    # SQLite returns sqlite3.Row objects, which support key access but not .get().
+    # Convert database rows to a normal dictionary before using .get().
+    if not isinstance(data, dict):
+        data = dict(data)
 
     iron = 0
     b12 = 0
@@ -242,7 +291,7 @@ def submit():
 
     conn = get_db()
 
-    conn.execute("""
+    execute(conn, """
         INSERT INTO assessments (
             name,
             submitted_at,
@@ -344,20 +393,20 @@ def dashboard():
 
     conn = get_db()
 
-    responses = conn.execute("""
+    responses = execute(conn, """
         SELECT *
         FROM assessments
         ORDER BY id DESC
     """).fetchall()
 
-    age_rows = conn.execute("""
+    age_rows = execute(conn, """
         SELECT age_group, COUNT(*) AS count
         FROM assessments
         GROUP BY age_group
         ORDER BY age_group
     """).fetchall()
 
-    diet_rows = conn.execute("""
+    diet_rows = execute(conn, """
         SELECT diet, COUNT(*) AS count
         FROM assessments
         GROUP BY diet
@@ -422,7 +471,7 @@ def export_excel():
 
     conn = get_db()
 
-    responses = conn.execute("""
+    responses = execute(conn, """
         SELECT *
         FROM assessments
         ORDER BY id
@@ -541,4 +590,6 @@ def nutrition_guide():
 init_db()
 
 if __name__ == "__main__":
+    init_db()
     app.run(debug=True)
+    
